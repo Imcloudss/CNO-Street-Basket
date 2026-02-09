@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNO Street Basket 2026 | Torneo 3x3 - Santarcangelo di Romagna</title>
+    <meta name="description" content="Torneo di basket 3x3 dal 23 al 26 giugno 2026 a Santarcangelo di Romagna. Iscriviti ora!">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <div class="logo-container">
+                <img src="./assets/cnologo.png" alt="logo torneo" class="logo-img">
+            </div>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="navMenu">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#regole" onclick="closeMenu()">Regole</a></li>
+                <li><a href="#programma" onclick="closeMenu()">Programma</a></li>
+                <li><a href="#categorie" onclick="closeMenu()">Categorie</a></li>
+                <li><a href="#iscrizioni" onclick="closeMenu()">Iscrizioni</a></li>
+                <li><a href="#risultati" onclick="closeMenu()">Risultati</a></li>
+                <li><a href="#contatti" onclick="closeMenu()">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-bg-shape shape-1"></div>
+        <div class="hero-bg-shape shape-2"></div>
+        <div class="hero-bg-shape shape-3"></div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">TORNEO UFFICIALE 3X3</div>
+            
+            <h1>CNO STREET<br>BASKET 2026</h1>
+            
+            <p class="subtitle">4 giorni di puro basket</p>
+            
+            <p class="date-location">
+                <span class="highlight">23-26 GIUGNO 2026</span><br>
+                <span class="location">📍 Parco Francolini, Santarcangelo di Romagna (RN)</span>
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="#iscrizioni" class="btn btn-primary">🏀 Iscriviti Ora</a>
+                <a href="#regole" class="btn btn-secondary">📋 Scopri le Regole</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Categorie</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Giorni</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3x3</div>
+                    <div class="stat-label">Formato</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGOLE RAPIDE 3x3 -->
+    <section class="quick-rules" id="regole">
+        <div class="section-header">
+            <div class="section-label">Come Funziona</div>
+            <h2 class="section-title">Regole Rapide 3x3</h2>
+            <p class="section-subtitle">Il basket 3x3 è veloce, dinamico e spettacolare. Ecco cosa devi sapere!</p>
+        </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <div class="rule-icon">👥</div>
+                <h3>Squadre</h3>
+                <p>3 giocatori in campo + 1 o 2 riserve per squadra. Massima rotazione e intensità garantita!</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-icon">⏱️</div>
+                <h3>Durata</h3>
+                <p>10 minuti o prima squadra a 21 punti. Partite veloci e adrenaliniche!</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-icon">🎯</div>
+                <h3>Punteggio</h3>
+                <p>1 punto dentro l'arco, 2 punti fuori dall'arco (linea da 3). Ogni punto conta!</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-icon">🔄</div>
+                <h3>Possesso</h3>
+                <p>Cambio possesso dopo ogni canestro. Il gioco non si ferma mai, azione continua!</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-icon">⛹️</div>
+                <h3>Fallo</h3>
+                <p>6 falli di squadra: tiro libero + possesso. 7° fallo: 2 tiri liberi + possesso.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-icon">🏆</div>
+                <h3>Fair Play</h3>
+                <p>Rispetto reciproco e spirito sportivo. Il basket è gioco di squadra e passione!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMMA -->
+    <section class="schedule" id="programma">
+        <div class="schedule-container">
+            <div class="section-header">
+                <div class="section-label">Calendario</div>
+                <h2 class="section-title">Programma del Torneo</h2>
+                <p class="section-subtitle">4 giorni di basket non-stop al Parco Francolini</p>
+            </div>
+
+            <div class="schedule-days">
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-number">23</div>
+                        <div class="day-name">Giovedì</div>
+                    </div>
+                    <div class="day-events">
+                        <div class="event-item">
+                            <div class="event-time">09:00 - 12:00</div>
+                            <div class="event-title">Check-in e accrediti squadre</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">14:00 - 19:00</div>
+                            <div class="event-title">Fase a gironi - Prima giornata</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">20:00</div>
+                            <div class="event-title">Inaugurazione ufficiale</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header" style="background: linear-gradient(135deg, var(--purple), var(--purple-light));">
+                        <div class="day-number">24</div>
+                        <div class="day-name">Venerdì</div>
+                    </div>
+                    <div class="day-events">
+                        <div class="event-item">
+                            <div class="event-time">10:00 - 13:00</div>
+                            <div class="event-title">Fase a gironi - Continuazione</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">15:00 - 19:00</div>
+                            <div class="event-title">Conclusione gironi</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">21:00</div>
+                            <div class="event-title">Sorteggio tabellone finale</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header" style="background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));">
+                        <div class="day-number">25</div>
+                        <div class="day-name">Sabato</div>
+                    </div>
+                    <div class="day-events">
+                        <div class="event-item">
+                            <div class="event-time">10:00 - 14:00</div>
+                            <div class="event-title">Ottavi e quarti di finale</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">16:00 - 20:00</div>
+                            <div class="event-title">Semifinali tutte le categorie</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">21:00</div>
+                            <div class="event-title">Serata musicale</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header" style="background: linear-gradient(135deg, #ffd700, #ffed4e);">
+                        <div class="day-number">26</div>
+                        <div class="day-name">Domenica</div>
+                    </div>
+                    <div class="day-events">
+                        <div class="event-item">
+                            <div class="event-time">10:00 - 15:00</div>
+                            <div class="event-title">Finali 3°/4° posto</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">16:00 - 19:00</div>
+                            <div class="event-title">🏆 FINALI tutte le categorie</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">20:00</div>
+                            <div class="event-title">Premiazioni e chiusura</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIE -->
+    <section class="categories" id="categorie">
+        <div class="section-header">
+            <div class="section-label">Partecipa</div>
+            <h2 class="section-title">Categorie</h2>
+            <p class="section-subtitle">Scegli la tua categoria e scendi in campo!</p>
+        </div>
+
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">🏀</div>
+                <div class="category-content">
+                    <h3>MINIBASKET</h3>
+                    <p>Per i più piccoli che vogliono iniziare a divertirsi con il basket di strada. Categoria educativa e formativa.</p>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">⚡</div>
+                <div class="category-content">
+                    <h3>UNDER 16</h3>
+                    <p>Giovani talenti pronti a mostrare le loro abilità sul campo. Energia e velocità al massimo!</p>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🔥</div>
+                <div class="category-content">
+                    <h3>UNDER 18</h3>
+                    <p>La categoria giovanile più competitiva del torneo. Tecnica e intensità ai massimi livelli!</p>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">💪</div>
+                <div class="category-content">
+                    <h3>SENIOR</h3>
+                    <p>La categoria principale, aperta a tutti gli appassionati. Sfida i migliori del territorio!</p>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">👴</div>
+                <div class="category-content">
+                    <h3>OVER 45</h3>
+                    <p>Esperienza e passione si incontrano sul campo. La classe non è acqua!</p>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">👩‍🦰</div>
+                <div class="category-content">
+                    <h3>FEMMINILE</h3>
+                    <p>Categoria mista minorenni e maggiorenni, aperta a tutte le giocatrici. Girl power!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPONSOR BANNER -->
+    <div class="sponsor-banner">
+        <div class="sponsor-scroll">
+            <div class="sponsor-logo">SPONSOR 1</div>
+            <div class="sponsor-logo">SPONSOR 2</div>
+            <div class="sponsor-logo">SPONSOR 3</div>
+            <div class="sponsor-logo">SPONSOR 4</div>
+            <div class="sponsor-logo">SPONSOR 5</div>
+            <div class="sponsor-logo">SPONSOR 6</div>
+            <!-- Duplicati per effetto continuo -->
+            <div class="sponsor-logo">SPONSOR 1</div>
+            <div class="sponsor-logo">SPONSOR 2</div>
+            <div class="sponsor-logo">SPONSOR 3</div>
+            <div class="sponsor-logo">SPONSOR 4</div>
+            <div class="sponsor-logo">SPONSOR 5</div>
+            <div class="sponsor-logo">SPONSOR 6</div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 CNO Street Basket. Tutti i diritti riservati.</p>
+        <p>Organizzato con passione per gli amanti del basket 3x3</p>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Email">✉️</a>
+        </div>
+    </footer>
+</body>
+</html>
