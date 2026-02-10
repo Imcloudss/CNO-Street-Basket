@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iscrizioni - CNO Street Basket 2026</title>
+    <meta name="description" content="Iscriviti al torneo CNO Street Basket 2026. Compila il form e partecipa!">
+    <link rel="icon" type="./assets/cnologo.png" href="../assets/cnologo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/iscrizioni.css">
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="../assets/cnologoWhite.png" alt="CNO Street Basket Logo" class="logo-img">
+                </a>
+            </div>
+            
+            <div class="mobile-menu-btn" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#regole">Regole</a></li>
+                <li><a href="../index.html#programma">Programma</a></li>
+                <li><a href="../index.html#categorie">Categorie</a></li>
+                <li><a href="iscrizioni.html" class="active">Iscrizioni</a></li>
+                <li><a href="risultati.html">Risultati</a></li>
+                <li><a href="index.html#contatti">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>ISCRIZIONI</h1>
+            <p>Compila il form per iscrivere la tua squadra al torneo</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-steps">
+                <div class="progress-line" id="progressLine"></div>
+                <div class="step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <div class="step-label">Squadra</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <div class="step-label">Giocatori</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <div class="step-label">Riepilogo</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-circle">✓</div>
+                    <div class="step-label">Conferma</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-card">
+            
+            <div class="error-message" id="errorMessage"></div>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Invio in corso...</p>
+            </div>
+
+            <form id="registrationForm">
+                
+                <div class="form-step active" data-step="1">
+                    <h2 class="step-title">Dati Squadra</h2>
+                    <p class="step-description">Inserisci le informazioni della tua squadra e del referente</p>
+
+                    <div class="form-group">
+                        <label for="teamName">Nome Squadra <span class="required">*</span></label>
+                        <input type="text" id="teamName" name="teamName" required placeholder="Es. Ballers RN">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Categoria <span class="required">*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="">Seleziona categoria</option>
+                            <option value="minibasket">Minibasket</option>
+                            <option value="under16">Under 16</option>
+                            <option value="under18">Under 18</option>
+                            <option value="senior">Senior</option>
+                            <option value="over45">Over 45</option>
+                            <option value="femminile">Femminile</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="referenteName">Nome Referente <span class="required">*</span></label>
+                        <input type="text" id="referenteName" name="referenteName" required placeholder="Nome e Cognome">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="referenteEmail">Email <span class="required">*</span></label>
+                            <input type="email" id="referenteEmail" name="referenteEmail" required placeholder="email@esempio.it">
+                        </div>
+                        <div class="form-group">
+                            <label for="referentePhone">Telefono <span class="required">*</span></label>
+                            <input type="tel" id="referentePhone" name="referentePhone" required placeholder="+39 333 123 4567">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="2">
+                    <h2 class="step-title">Giocatori</h2>
+                    <p class="step-description">Inserisci i dati di almeno 3 giocatori (massimo 5)</p>
+
+                    <div class="player-card">
+                        <div class="player-header">
+                            <div class="player-number">GIOCATORE 1</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nome e Cognome <span class="required">*</span></label>
+                                <input type="text" name="player1Name" required placeholder="Mario Rossi">
+                            </div>
+                            <div class="form-group">
+                                <label>Data di Nascita <span class="required">*</span></label>
+                                <input type="date" name="player1Birth" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-header">
+                            <div class="player-number">GIOCATORE 2</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nome e Cognome <span class="required">*</span></label>
+                                <input type="text" name="player2Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Data di Nascita <span class="required">*</span></label>
+                                <input type="date" name="player2Birth" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-header">
+                            <div class="player-number">GIOCATORE 3</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nome e Cognome <span class="required">*</span></label>
+                                <input type="text" name="player3Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Data di Nascita <span class="required">*</span></label>
+                                <input type="date" name="player3Birth" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-header">
+                            <div class="player-number">GIOCATORE 4</div>
+                            <div class="optional-badge">Opzionale</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nome e Cognome</label>
+                                <input type="text" name="player4Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Data di Nascita</label>
+                                <input type="date" name="player4Birth">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="player-card">
+                        <div class="player-header">
+                            <div class="player-number">GIOCATORE 5</div>
+                            <div class="optional-badge">Opzionale</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nome e Cognome</label>
+                                <input type="text" name="player5Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Data di Nascita</label>
+                                <input type="date" name="player5Birth">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Note Aggiuntive</label>
+                        <textarea id="notes" name="notes" placeholder="Eventuali richieste, allergie o comunicazioni..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-step" data-step="3">
+                    <h2 class="step-title">Riepilogo</h2>
+                    <p class="step-description">Verifica i dati inseriti prima di inviare</p>
+
+                    <div id="reviewContent"></div>
+
+                    <div class="review-section" style="border-left-color: var(--cyan); margin-top: 2rem;">
+                        <h3>📄 Modalità di Pagamento</h3>
+                        <p style="margin-bottom: 1rem;">Dopo la conferma, riceverai un'email con i dettagli per completare il pagamento:</p>
+                        <div class="review-item">
+                            <span class="review-label">Bonifico Bancario</span>
+                            <span class="review-value">IBAN: IT00X0000000000000000000000</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">PayPal</span>
+                            <span class="review-value">cnostreetbasket@email.com</span>
+                        </div>
+                        <div class="review-item">
+                            <span class="review-label">Contanti</span>
+                            <span class="review-value">Presso la sede organizzativa</span>
+                        </div>
+                        <p style="margin-top: 1rem; color: var(--orange); font-weight: 700;">
+                            Causale: "Iscrizione CNO 2026 - [Nome Squadra]"
+                        </p>
+                    </div>
+                </div>
+            </form>
+
+            <div class="success-card" id="successCard">
+                <div class="success-icon">🎉</div>
+                <h2 class="step-title">Iscrizione Completata!</h2>
+                <div class="registration-code" id="displayCode"></div>
+                <div class="success-message">
+                    <p><strong>Iscrizione ricevuta con successo!</strong></p>
+                    <p>Conserva questo codice per qualsiasi comunicazione futura.</p>
+                    <p>Ti abbiamo inviato un'email di conferma con tutti i dettagli e le istruzioni per il pagamento.</p>
+                    <p style="margin-top: 1.5rem; color: var(--cyan);">Ci vediamo al Parco Francolini! 🏀</p>
+                </div>
+                <button class="btn btn-primary" onclick="window.location.href='../index.html'">Torna alla Home</button>
+            </div>
+
+            <div class="button-group" id="buttonGroup">
+                <button type="button" class="btn btn-secondary" id="prevBtn" onclick="changeStep(-1)">← Indietro</button>
+                <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeStep(1)">Avanti →</button>
+                <button type="button" class="btn btn-primary" id="submitBtn" onclick="submitForm()" style="display: none;">Invia Iscrizione</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CNO Street Basket. Tutti i diritti riservati.</p>
+        <p>Organizzato con passione per gli amanti del basket 3x3</p>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="mailto:info@cnostreetbasket.it" aria-label="Email">✉️</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          // Inizializzazione con la tua Public Key
+          emailjs.init("VUmKWxh_m8h7Y8m-Q");
+       })();
+    </script>
+    <script src="../js/iscrizioni.js"></script>
+
+</body>
+</html>

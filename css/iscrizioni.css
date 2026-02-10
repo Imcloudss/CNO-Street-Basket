@@ -1,0 +1,612 @@
+/* ==========================================================================
+   ISCRIZIONI.CSS
+   Stili specifici per la pagina di registrazione (inclusi Nav e Footer)
+   ========================================================================== */
+
+/* ===================================
+   1. VARIABLES & RESET
+   =================================== */
+:root {
+    --black: #0a0a0a;
+    --orange: #ff6b35;
+    --orange-dark: #e85a2a;
+    --orange-light: #ff8c61;
+    --purple: #5a2d5f;
+    --purple-dark: #3d1f40;
+    --purple-light: #7b4580;
+    --cyan: #00d9ff;
+    --cyan-dark: #00b8d4;
+    --grey-dark: #1a1a1a;
+    --grey: #2a2a2a;
+    --grey-light: #404040;
+    --white: #ffffff;
+    --white-off: #f5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.6;
+    /* Rimosso padding generico sul body per evitare conflitti con la nav fixed */
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem; /* Padding gestito qui */
+}
+
+/* ===================================
+   2. NAVIGATION (Dal Common)
+   =================================== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 3px solid var(--orange);
+    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 70px;
+    width: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.3));
+    transition: all 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a:hover, nav a.active {
+    color: var(--cyan);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--cyan));
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after, nav a.active::after {
+    width: 100%;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    width: 25px;
+    height: 3px;
+    background: var(--orange);
+    transition: all 0.3s ease;
+}
+
+/* ===================================
+   3. REGISTRATION SPECIFIC STYLES
+   =================================== */
+
+/* Layout correzioni per container form */
+.container:not(nav .container) {
+    max-width: 900px; /* Più stretto per il form */
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+    margin-top: 120px; /* Aumentato per compensare la navbar fixed */
+    animation: fadeInDown 0.8s ease;
+}
+
+.header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    background: linear-gradient(135deg, var(--orange), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+}
+
+.header p {
+    color: var(--white-off);
+    font-size: 1.2rem;
+}
+
+/* PROGRESS BAR */
+.progress-container {
+    margin-bottom: 3rem;
+    animation: fadeIn 1s ease;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--grey-light);
+    z-index: 0;
+}
+
+.progress-line {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--orange), var(--cyan));
+    transition: width 0.5s ease;
+    z-index: 1;
+}
+
+.step {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    flex: 1;
+}
+
+.step-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--grey);
+    border: 4px solid var(--grey-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.step.active .step-circle {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--black);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+    transform: scale(1.1);
+}
+
+.step.completed .step-circle {
+    background: var(--cyan);
+    border-color: var(--cyan);
+    color: var(--black);
+}
+
+.step-label {
+    font-size: 0.85rem;
+    color: var(--grey-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.step.active .step-label {
+    color: var(--orange);
+}
+
+.step.completed .step-label {
+    color: var(--cyan);
+}
+
+/* FORM CARD */
+.form-card {
+    background: var(--grey-dark);
+    padding: 3rem;
+    border: 3px solid var(--orange);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.6s ease;
+    margin-bottom: 4rem;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.step-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--orange);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.step-description {
+    color: var(--white-off);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* FORM ELEMENTS */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--cyan);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+label .required {
+    color: var(--orange);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 1rem;
+    background: var(--grey);
+    border: 2px solid var(--grey-light);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--orange);
+    background: var(--grey-light);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* PLAYER CARDS */
+.player-card {
+    background: var(--grey);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--purple);
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.player-number {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--purple-light);
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+}
+
+.optional-badge {
+    background: rgba(0, 217, 255, 0.2);
+    color: var(--cyan);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* BUTTONS */
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Barlow', sans-serif;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    color: var(--black);
+    box-shadow: 0 5px 30px rgba(255, 107, 53, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 40px rgba(255, 107, 53, 0.6);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--cyan);
+    border: 3px solid var(--cyan);
+    box-shadow: 0 5px 30px rgba(0, 217, 255, 0.3);
+}
+
+.btn-secondary:hover {
+    background: var(--cyan);
+    color: var(--black);
+    transform: translateY(-5px);
+}
+
+/* REVIEW SECTION */
+.review-section {
+    background: var(--grey);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--orange);
+}
+
+.review-section h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--orange);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--grey-light);
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-label {
+    color: var(--cyan);
+    font-weight: 600;
+}
+
+.review-value {
+    color: var(--white);
+    text-align: right;
+}
+
+/* SUCCESS CARD */
+.success-card {
+    text-align: center;
+    padding: 3rem;
+    display: none;
+}
+
+.success-card.active {
+    display: block;
+    animation: scaleIn 0.6s ease;
+}
+
+.success-icon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    animation: bounce 1s ease infinite;
+}
+
+.registration-code {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--orange);
+    background: var(--grey);
+    padding: 1rem 2rem;
+    margin: 2rem 0;
+    letter-spacing: 4px;
+    border: 3px solid var(--orange);
+    display: inline-block;
+}
+
+.success-message {
+    color: var(--white-off);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.success-message strong {
+    color: var(--orange);
+}
+
+/* UTILITIES */
+.loading {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+.loading.active {
+    display: block;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--grey-light);
+    border-top-color: var(--orange);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+.error-message {
+    background: rgba(255, 107, 53, 0.1);
+    border: 2px solid var(--orange);
+    color: var(--orange);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+.error-message.active {
+    display: block;
+    animation: shake 0.5s ease;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
+@keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* ===================================
+   4. FOOTER (Dal Common)
+   =================================== */
+footer {
+    background: var(--black);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 3px solid var(--orange);
+}
+
+footer p {
+    color: var(--white-off);
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--orange);
+    transform: translateY(-5px);
+}
+
+/* ===================================
+   5. RESPONSIVE
+   =================================== */
+@media (max-width: 768px) {
+    /* Mobile Menu Logic */
+    nav ul {
+        position: fixed;
+        top: 85px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 85px);
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: left 0.3s ease;
+    }
+
+    nav ul.active {
+        left: 0;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+    .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+    /* Form Responsive */
+    .header { margin-top: 100px; }
+    .form-card { padding: 2rem 1.5rem; }
+    .step-label { font-size: 0.7rem; }
+    .button-group { flex-direction: column; }
+    .btn { width: 100%; }
+    .progress-steps { font-size: 0.8rem; }
+    .step-circle { width: 36px; height: 36px; font-size: 0.9rem; }
+    .registration-code { font-size: 2rem; padding: 0.75rem 1.5rem; }
+    .review-item { flex-direction: column; gap: 0.5rem; }
+    .review-value { text-align: left; }
+}
