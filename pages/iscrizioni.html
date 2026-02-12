@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- reCAPTCHA --> 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     
     <!-- Supabase Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -231,7 +234,13 @@
                         </div>
                         <div class="review-item">
                             <span class="review-label">PayPal</span>
-                            <span class="review-value">cnostreetbasket@email.com</span>
+                            <span class="review-value">
+                                <a href="https://www.paypal.com/paypalme/INSERISCI_QUI_IL_TUO_LINK"
+                                target="_blank"
+                                style="color: var(--orange); text-decoration: underline; font-weight: bold;">
+                                Paga ora con PayPal ↗
+                                </a>
+                            </span>
                         </div>
                         <div class="review-item">
                             <span class="review-label">Contanti</span>
@@ -240,6 +249,9 @@
                         <p style="margin-top: 1rem; color: var(--orange); font-weight: 700;">
                             Causale: "Iscrizione CNO 2026 - [Nome Squadra]"
                         </p>
+                    </div>
+                    <div style="margin-top: 2rem; display: flex; justify-content: center;">
+                        <div class="g-recaptcha" data-sitekey="6LeVDmgsAAAAALWvf3JQO1IlAtn6F6t9J5FmWJ0q"></div>
                     </div>
                 </div>
             </form>
@@ -250,11 +262,28 @@
                 <div class="registration-code" id="displayCode"></div>
                 <div class="success-message">
                     <p><strong>Iscrizione ricevuta con successo!</strong></p>
-                    <p>Conserva questo codice per qualsiasi comunicazione futura.</p>
-                    <p>Ti abbiamo inviato un'email di conferma con tutti i dettagli e le istruzioni per il pagamento.</p>
-                    <p style="margin-top: 1.5rem; color: var(--cyan);">Ci vediamo al Parco Francolini! 🏀</p>
+                    <p style="color: var(--orange); font-weight: bold; margin: 1rem 0;">
+                        ⚠️ Attenzione: il tuo posto sarà bloccato solo dopo il pagamento.
+                    </p>
+                    <p>Conserva il codice qui sopra per qualsiasi comunicazione futura.</p>
+                    <p>Ti abbiamo inviato un'email di conferma con tutti i dettagli.</p>
                 </div>
-                <button class="btn btn-primary" onclick="window.location.href='../index.html'">Torna alla Home</button>
+                <div style="margin: 2rem 0;">
+                    <a href="https://www.paypal.com/paypalme/INSERISCI_QUI_IL_TUO_LINK"
+                    target="_blank"
+                    class="btn"
+                    style="background-color: #0070BA; color: white; border: none; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; max-width: 350px; padding: 1rem;">
+                    <span>Paga ora con PayPal</span>
+                    <span style="font-size: 1.2rem;">💳</span>
+                    </a>
+                    <p style="font-size: 0.85rem; color: var(--white-off); margin-top: 0.5rem; opacity: 0.7;">
+                        (Si aprirà in una nuova scheda)
+                    </p>
+                </div>
+                <p style="margin-bottom: 2rem; color: var(--cyan); font-weight: bold;">Ci vediamo al Parco Francolini! 🏀</p>
+                <button class="btn btn-secondary" onclick="window.location.href='index.html'" style="width: auto; padding: 0.8rem 2rem;">
+                    Torna alla Home
+                </button>
             </div>
 
             <div class="button-group" id="buttonGroup">

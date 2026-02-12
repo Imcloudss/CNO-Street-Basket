@@ -568,6 +568,11 @@ footer p {
     transform: translateY(-5px);
 }
 
+.g-recaptcha {
+    transform: scale(0.95);
+    transform-origin: center;
+}
+
 /* ===================================
    5. RESPONSIVE
    =================================== */
@@ -609,4 +614,10 @@ footer p {
     .registration-code { font-size: 2rem; padding: 0.75rem 1.5rem; }
     .review-item { flex-direction: column; gap: 0.5rem; }
     .review-value { text-align: left; }
+}
+
+@media (max-width: 768px) {
+    .g-recaptcha {
+        transform: scale(0.85);
+    }
 }
