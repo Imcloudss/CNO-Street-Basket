@@ -1,41 +1,61 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. GESTIONE MENU MOBILE
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.getElementById('navMenu');
-    const body = document.body;
+/* --- 1. GESTIONE MENU MOBILE (Globale per funzionare con onclick) --- */
+const navMenu = document.getElementById('navMenu');
+const menuBtn = document.querySelector('.mobile-menu-btn');
+const body = document.body;
 
-    if (menuBtn && navMenu) {
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('active');
-            navMenu.classList.toggle('active');
+// Funzione chiamata direttamente dall'HTML (onclick="toggleMenu()")
+function toggleMenu() {
+    if (!navMenu || !menuBtn) return;
 
-            // Blocca lo scroll quando il menu è aperto
-            if (navMenu.classList.contains('active')) {
-                body.style.overflow = 'hidden';
-            } else {
-                body.style.overflow = 'auto';
-            }
-        });
+    navMenu.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+
+    // Blocca lo scroll se il menu è aperto
+    if (navMenu.classList.contains('active')) {
+        body.style.overflow = 'hidden';
+    } else {
+        body.style.overflow = 'auto';
     }
+}
 
-    // 2. SMOOTH SCROLL E CORREZIONE POSIZIONE
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Funzione per chiudere il menu
+function closeMenu() {
+    if (!navMenu || !menuBtn) return;
+    
+    navMenu.classList.remove('active');
+    menuBtn.classList.remove('active');
+    body.style.overflow = 'auto';
+}
+
+/* --- 2. GESTIONE EVENTI AL CARICAMENTO PAGINA --- */
+document.addEventListener('DOMContentLoaded', () => {
+
+    // A. CHIUSURA MENU AL CLICK ESTERNO
+    document.addEventListener('click', (e) => {
+        // Se il menu è aperto E non clicco sul menu E non clicco sul bottone
+        if (navMenu && navMenu.classList.contains('active') && 
+            !navMenu.contains(e.target) && 
+            !menuBtn.contains(e.target)) {
+            closeMenu();
+        }
+    });
+
+    // B. SMOOTH SCROLL (Scorrimento fluido)
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            // Ignora link vuoti
+            if (this.getAttribute('href') === '#') return;
+
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            
-            // Gestione link vuoti o non validi
-            if (targetId === '#') return;
-            
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-                if (menuBtn) menuBtn.classList.remove('active');
-                if (navMenu) navMenu.classList.remove('active');
-                body.style.overflow = 'auto'; // Riattiva scroll
-                
-                // Calcolo preciso della posizione
+                // Chiudi menu prima di scorrere
+                closeMenu();
+
+                // Calcolo posizione (considerando navbar fissa 85px)
                 const headerOffset = 85;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -48,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. MENU ATTIVO DURANTE LO SCROLL
+    // C. EVIDENZIA MENU DURANTE SCROLL
     window.addEventListener('scroll', () => {
         const sections = document.querySelectorAll('section[id]');
         const scrollY = window.pageYOffset;
@@ -68,35 +88,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-});
 
-/* GESTIONE COOKIE BANNER */
-document.addEventListener('DOMContentLoaded', () => {
+    // D. GESTIONE COOKIE BANNER
     const cookieBanner = document.getElementById('cookieBanner');
     const acceptBtn = document.getElementById('acceptCookies');
     const declineBtn = document.getElementById('declineCookies');
 
-    // 1. Controlla se l'utente ha già fatto una scelta
-    if (!localStorage.getItem('cookieConsent')) {
-        // Se NON ha scelto, mostra il banner dopo 1 secondo (effetto entrata)
+    // Mostra banner se non c'è scelta salvata
+    if (cookieBanner && !localStorage.getItem('cookieConsent')) {
         setTimeout(() => {
             cookieBanner.classList.add('show');
         }, 1000);
     }
 
-    // 2. Click su Accetta
+    // Click su Accetta
     if (acceptBtn) {
         acceptBtn.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'accepted'); // Salva la scelta
-            cookieBanner.classList.remove('show'); // Nascondi banner
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieBanner.classList.remove('show');
         });
     }
 
-    // 3. Click su Rifiuta
+    // Click su Rifiuta
     if (declineBtn) {
         declineBtn.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'declined'); // Salva la scelta
-            cookieBanner.classList.remove('show'); // Nascondi banner
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieBanner.classList.remove('show');
         });
     }
 });

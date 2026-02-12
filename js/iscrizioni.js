@@ -525,7 +525,7 @@ window.submitForm = async function() {
 
     try {
         console.log('📊 Tentativo salvataggio su Supabase...');
-        const { data: dbData, error: dbError } = await supabaseClient
+        const { error: dbError } = await supabaseClient
             .from('iscrizioni')
             .insert([
                 {
@@ -540,14 +540,11 @@ window.submitForm = async function() {
                     recaptcha_verified: true
                 }
             ])
-            .select();
 
         if (dbError) {
             console.error('❌ Errore Database:', dbError);
             throw new Error('Errore nel salvataggio dei dati: ' + dbError.message);
         }
-
-        console.log('✅ Dati salvati su Supabase:', dbData);
 
         console.log('📧 Tentativo invio email...');
         
