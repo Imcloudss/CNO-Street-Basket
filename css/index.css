@@ -873,3 +873,79 @@ footer p {
         right: -50px;
     }
 }
+
+/* =========================================
+   COOKIE BANNER STYLE
+   ========================================= */
+.cookie-banner {
+    position: fixed;
+    bottom: -100%; /* Nascondi inizialmente sotto lo schermo */
+    left: 20px;
+    right: 20px;
+    max-width: 500px; /* Non troppo largo su desktop */
+    background: rgba(26, 26, 26, 0.95); /* Grigio scuro quasi nero */
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--orange);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    z-index: 9999; /* Sopra a tutto */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animazione rimbalzo */
+}
+
+/* Classe per mostrare il banner */
+.cookie-banner.show {
+    bottom: 20px; /* Posizione finale */
+}
+
+.cookie-content {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.cookie-icon {
+    font-size: 2rem;
+}
+
+.cookie-text h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.cookie-text p {
+    font-size: 0.9rem;
+    color: var(--white-off);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+/* Adattamento Mobile */
+@media (max-width: 600px) {
+    .cookie-banner {
+        left: 10px;
+        right: 10px;
+        bottom: -100%;
+    }
+    .cookie-banner.show {
+        bottom: 10px;
+    }
+    .cookie-buttons {
+        width: 100%;
+    }
+    .cookie-buttons button {
+        flex: 1; /* Bottoni a larghezza piena su mobile */
+    }
+}

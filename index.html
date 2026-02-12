@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/index.css">
+    <script src="./js/script.js"></script>
 </head>
 <body>
     <!-- NAVIGATION -->
@@ -20,7 +21,7 @@
             <div class="logo-container">
                 <img src="./assets/cnologoWhite.png" alt="logo torneo" class="logo-img">
             </div>
-            <div class="mobile-menu-btn" onclick="toggleMenu()">
+            <div class="mobile-menu-btn">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -253,102 +254,6 @@
         </div>
     </section>
 
-    <!-- PROGRAMMA -->
-    <section class="schedule" id="programma">
-        <div class="schedule-container">
-            <div class="section-header">
-                <div class="section-label">Programma</div>
-                <h2 class="section-title">Programma del Torneo</h2>
-            </div>
-
-            <div class="schedule-days">
-                <div class="day-card">
-                    <div class="day-header">
-                        <div class="day-number">23</div>
-                        <div class="day-name">Giovedì</div>
-                    </div>
-                    <div class="day-events">
-                        <div class="event-item">
-                            <div class="event-time">09:00 - 12:00</div>
-                            <div class="event-title">Check-in e accrediti squadre</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-time">14:00 - 19:00</div>
-                            <div class="event-title">Fase a gironi - Prima giornata</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-time">20:00</div>
-                            <div class="event-title">Inaugurazione ufficiale</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="day-card">
-                    <div class="day-header" style="background: linear-gradient(135deg, var(--purple), var(--purple-light));">
-                        <div class="day-number">24</div>
-                        <div class="day-name">Venerdì</div>
-                    </div>
-                    <div class="day-events">
-                        <div class="event-item">
-                            <div class="event-time">10:00 - 13:00</div>
-                            <div class="event-title">Fase a gironi - Continuazione</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-time">15:00 - 19:00</div>
-                            <div class="event-title">Conclusione gironi</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-time">21:00</div>
-                            <div class="event-title">Sorteggio tabellone finale</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="day-card">
-                    <div class="day-header" style="background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));">
-                        <div class="day-number">25</div>
-                        <div class="day-name">Sabato</div>
-                    </div>
-                    <div class="day-events">
-                        <div class="event-item">
-                            <div class="event-time">10:00 - 14:00</div>
-                            <div class="event-title">Ottavi e quarti di finale</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-time">16:00 - 20:00</div>
-                            <div class="event-title">Semifinali tutte le categorie</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-time">21:00</div>
-                            <div class="event-title">Serata musicale</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="day-card">
-                    <div class="day-header" style="background: linear-gradient(135deg, #ffd700, #ffed4e);">
-                        <div class="day-number">26</div>
-                        <div class="day-name">Domenica</div>
-                    </div>
-                    <div class="day-events">
-                        <div class="event-item">
-                            <div class="event-time">10:00 - 15:00</div>
-                            <div class="event-title">Finali 3°/4° posto</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-time">16:00 - 19:00</div>
-                            <div class="event-title">🏆 FINALI tutte le categorie</div>
-                        </div>
-                        <div class="event-item">
-                            <div class="event-time">20:00</div>
-                            <div class="event-title">Premiazioni e chiusura</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CATEGORIE -->
     <section class="categories" id="categorie">
         <div class="section-header">
@@ -407,6 +312,102 @@
         </div>
     </section>
 
+    <!-- PROGRAMMA -->
+    <section class="schedule" id="programma">
+        <div class="schedule-container">
+            <div class="section-header">
+                <div class="section-label">Programma</div>
+                <h2 class="section-title">Programma del Torneo</h2>
+            </div>
+
+            <div class="schedule-days">
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-number">23</div>
+                        <div class="day-name">Martedi'</div>
+                    </div>
+                    <div class="day-events">
+                        <div class="event-item">
+                            <div class="event-time">15:30</div>
+                            <div class="event-title">Check-in e consegna materiale Under 16</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">16:00 - 19:30</div>
+                            <div class="event-title">Fasi a gironi Under 16</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">19:30</div>
+                            <div class="event-title">Check-in e consegna materiale Senior</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">20:00 - 23:30</div>
+                            <div class="event-title">Fase a gironi Senior - Gironi A e B</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header" style="background: linear-gradient(135deg, var(--purple), var(--purple-light));">
+                        <div class="day-number">24</div>
+                        <div class="day-name">Venerdì</div>
+                    </div>
+                    <div class="day-events">
+                        <div class="event-item">
+                            <div class="event-time">15:30</div>
+                            <div class="event-title">Check-in e consegna materiale Under 18</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">16:00 - 19:30</div>
+                            <div class="event-title">Fasi a gironi Under 18</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">19:30</div>
+                            <div class="event-title">Check-in e consegna materiale Senior</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">20:00 - 23:30</div>
+                            <div class="event-title">Fase a gironi Senior - Gironi C e D</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header" style="background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));">
+                        <div class="day-number">25</div>
+                        <div class="day-name">Sabato</div>
+                    </div>
+                    <div class="day-events">
+                        <div class="event-item">
+                            <div class="event-time">18:30</div>
+                            <div class="event-title">Check-in e consegna materiale Femminile e Over 45</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">19:00 - 22:30</div>
+                            <div class="event-title">Fasi a gironi Femminile e Over 45</div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-time">22:30 - 23:30</div>
+                            <div class="event-title">Fasi finali Femminile e Over 45</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header" style="background: linear-gradient(135deg, #ffd700, #ffed4e);">
+                        <div class="day-number">26</div>
+                        <div class="day-name">Domenica</div>
+                    </div>
+                    <div class="day-events">
+                        <div class="event-item">
+                            <div class="event-time">Da definire</div>
+                            <div class="event-title">Fasi a eliminazione e finali delle categorie: Under 16, Under 18 e Senior</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SPONSOR BANNER -->
     <div class="sponsor-banner">
         <div class="sponsor-scroll">
@@ -427,12 +428,25 @@
     <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 CNO Street Basket. Tutti i diritti riservati.</p>
-        <p>Organizzato con passione per gli amanti del basket 3x3</p>
         <!-- <div class="social-links">
             <a href="#" aria-label="Instagram">📷</a>
             <a href="#" aria-label="Facebook">📘</a>
             <a href="#" aria-label="Email">✉️</a>
         </div> -->
     </footer>
+
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-icon">🍪</div>
+            <div class="cookie-text">
+                <h4>Cookie Policy</h4>
+                <p>Utilizziamo i cookie per migliorare la tua esperienza sul campo digitale. Continuando a navigare accetti la nostra policy.</p>
+            </div>
+        </div>
+        <div class="cookie-buttons">
+            <button id="acceptCookies" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Accetta</button>
+            <button id="declineCookies" class="btn btn-secondary" style="padding: 0.8rem 1.5rem; font-size: 0.9rem;">Rifiuta</button>
+        </div>
+    </div>
 </body>
 </html>
