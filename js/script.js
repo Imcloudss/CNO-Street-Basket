@@ -1,31 +1,34 @@
-/* --- 1. GESTIONE MENU MOBILE (Globale per funzionare con onclick) --- */
-const navMenu = document.getElementById('navMenu');
-const menuBtn = document.querySelector('.mobile-menu-btn');
-const body = document.body;
-
+/* --- 1. GESTIONE MENU MOBILE --- */
 // Funzione chiamata direttamente dall'HTML (onclick="toggleMenu()")
-function toggleMenu() {
-    if (!navMenu || !menuBtn) return;
+window.toggleMenu = function() {
+    const navMenu = document.getElementById('navMenu');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const body = document.body;
 
-    navMenu.classList.toggle('active');
-    menuBtn.classList.toggle('active');
+    if (navMenu && menuBtn) {
+        navMenu.classList.toggle('active');
+        menuBtn.classList.toggle('active');
 
-    // Blocca lo scroll se il menu è aperto
-    if (navMenu.classList.contains('active')) {
-        body.style.overflow = 'hidden';
-    } else {
+        // Blocca lo scroll se il menu è aperto
+        if (navMenu.classList.contains('active')) {
+            body.style.overflow = 'hidden';
+        } else {
+            body.style.overflow = 'auto';
+        }
+    }
+};
+
+window.closeMenu = function() {
+    const navMenu = document.getElementById('navMenu');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const body = document.body;
+
+    if (navMenu && menuBtn) {
+        navMenu.classList.remove('active');
+        menuBtn.classList.remove('active');
         body.style.overflow = 'auto';
     }
-}
-
-// Funzione per chiudere il menu
-function closeMenu() {
-    if (!navMenu || !menuBtn) return;
-    
-    navMenu.classList.remove('active');
-    menuBtn.classList.remove('active');
-    body.style.overflow = 'auto';
-}
+};
 
 /* --- 2. GESTIONE EVENTI AL CARICAMENTO PAGINA --- */
 document.addEventListener('DOMContentLoaded', () => {
