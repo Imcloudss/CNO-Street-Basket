@@ -400,7 +400,11 @@ nav a:hover::after {
     font-weight: 600;
 }
 
-
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    width: 100%;
+}
 
 /* REGOLE 3X3 */
 .rules-highlight {
@@ -755,22 +759,20 @@ nav a:hover::after {
 
 .sponsor-logo {
     height: 70px;
-    width: 160px;
-    background: rgba(255, 255, 255, 0.05);
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
     color: var(--white);
     flex-shrink: 0;
-    border: 2px solid rgba(255, 107, 53, 0.3);
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
 }
 
 .sponsor-logo:hover {
     border-color: var(--orange);
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(204, 204, 204, 0.1);
     transform: scale(1.1);
 }
 
@@ -782,7 +784,7 @@ nav a:hover::after {
 /* FOOTER */
 footer {
     background: var(--black);
-    padding: 3rem 2rem;
+    padding: 1rem 2rem;
     text-align: center;
     border-top: 3px solid var(--orange);
 }
