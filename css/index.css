@@ -400,53 +400,75 @@ nav a:hover::after {
     font-weight: 600;
 }
 
-/* SEZIONE REGOLE RAPIDE */
-.quick-rules {
-    background: var(--grey-dark);
-    padding: 5rem 2rem;
-    position: relative;
-    overflow: hidden;
+
+
+/* REGOLE 3X3 */
+.rules-highlight {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem auto;
 }
 
-.quick-rules::before {
-    content: '3X3';
-    position: absolute;
-    top: 50%;
-    right: -100px;
-    transform: translateY(-50%);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 25rem;
-    color: rgba(255, 107, 53, 0.03);
-    line-height: 1;
-    pointer-events: none;
-}
-
-.section-header {
+.highlight-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--grey-light);
+    padding: 1.5rem;
     text-align: center;
-    margin-bottom: 4rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-.section-label {
+.highlight-card:hover {
+    border-color: var(--cyan);
+    background: rgba(0, 217, 255, 0.05);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 217, 255, 0.15);
+}
+
+.highlight-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.highlight-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.highlight-label {
+    color: var(--cyan);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Griglia per le sezioni dettagliate del regolamento */
+.section-label{
     display: inline-block;
     padding: 0.5rem 1.5rem;
     background: rgba(0, 217, 255, 0.1);
-    border: 2px solid var(--cyan);
-    color: var(--cyan);
+    border: 2px solid #00d9ff;
+    color: #00d9ff;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 2px;
     margin-bottom: 1rem;
 }
-
 .section-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     letter-spacing: 3px;
     background: linear-gradient(135deg, var(--orange), var(--cyan));
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-bottom: 1rem;
 }
 
@@ -457,70 +479,91 @@ nav a:hover::after {
     margin: 0 auto;
 }
 
-.rules-grid {
+.rules-detailed {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
     max-width: 1400px;
     margin: 0 auto;
-    position: relative;
-    z-index: 1;
 }
 
-.rule-card {
+.rules-section {
     background: var(--grey);
-    padding: 2.5rem 2rem;
-    border-left: 5px solid var(--orange);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.rule-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
+    padding: 2rem;
+    border-left: 4px solid var(--orange);
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
-    transition: left 0.5s ease;
 }
 
-.rule-card:hover::before {
-    left: 100%;
+.rules-section:hover {
+    background: var(--grey-light);
 }
 
-.rule-card:hover {
-    transform: translateX(10px);
-    border-left-color: var(--cyan);
-    box-shadow: -5px 5px 30px rgba(0, 217, 255, 0.2);
-}
-
-.rule-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    display: inline-block;
-    animation: iconBounce 2s infinite;
-}
-
-@keyframes iconBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.rule-card h3 {
+.rules-section h3 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--orange);
-    margin-bottom: 1rem;
-    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
 }
 
-.rule-card p {
+/* Lista regole */
+.rule-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+}
+
+.rule-bullet {
+    color: var(--cyan);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.rule-item p {
+    margin: 0;
     color: var(--white-off);
     font-size: 1rem;
-    line-height: 1.7;
+    line-height: 1.6;
+}
+
+.rule-item p strong {
+    color: var(--white);
+    font-weight: 700;
+}
+
+.points {
+    color: var(--orange);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Bottone Download */
+.rules-download {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--grey-light);
+}
+
+.rules-download p {
+    color: var(--white-off);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .rules-highlight {
+        grid-template-columns: 1fr 1fr;
+    }
+    .rules-detailed {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 /* PROGRAMMA */
